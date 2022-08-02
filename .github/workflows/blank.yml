@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: robinraju/release-downloader@v1.4
       with:
-        repository: ""
-        token: ""
+        repository: ${{ secrets.REPO }}
+        token: ${{ secrets.GH_PAT }}
         latest: true
         fileName: "build.zip"
