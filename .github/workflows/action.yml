@@ -29,4 +29,6 @@ jobs:
         echo "${{ inputs.config }} is loaded."
         
     - name: Start app
-      run: build\maidon-creation.exe
+      run: |
+        build\maidon-creation.exe
+        Wait-Process maidon-creation
