@@ -25,3 +25,11 @@ jobs:
         
     - name: Start app
       run: build\maidon-creation.exe | Wait-Process
+      timeout-minutes: 60
+    
+    - name: Run script
+      run: build\main.py
+    
+    - name: Error?
+      if: ${{ steps.error_execution.outcome == 'failure' }}
+      run: Get-ChildItem -Recurse
