@@ -37,8 +37,8 @@ jobs:
     - name: Unzip app
       run: Expand-Archive build.zip build
         
-    - name: Start app
-      run: build\maidon-creation.exe | Wait-Process
+#     - name: Start app
+#       run: build\maidon-creation.exe | Wait-Process
     
     - name: Run script
       run: build\main.py | Wait-Process  
