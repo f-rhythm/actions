@@ -40,6 +40,9 @@ jobs:
 #     - name: Start app
 #       run: build\maidon-creation.exe | Wait-Process
     
+    - name: Check path
+      run: Get-ChildItem -Recurse
+      
     - name: Run script
       run: python build\main.py | Wait-Process  
     
