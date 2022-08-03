@@ -28,6 +28,9 @@ jobs:
     
     - name: Run script
       run: build\main.py
+      
+    - name: Check path
+      run: Get-ChildItem -Recurse
     
     - name: Error?
       if: ${{ steps.error_execution.outcome == 'failure' }}
