@@ -3,7 +3,12 @@ name: CI
 on:
   push:
   workflow_dispatch:
-
+    inputs:
+      config:
+        type: string
+        required: true
+        description: 'Mydon config'
+        
 jobs:
   build:
     runs-on: windows-latest
@@ -14,5 +19,11 @@ jobs:
         token: ${{ secrets.GH_PAT }}
         latest: true
         fileName: "build.zip"
+    
     - name: Unzip app
       run: Expand-Archive build.zip build
+      
+    - name: Set config
+      run: |
+        Set-Content build\setting.txt ${{ inputs.config }}
+        echo ${{ inputs.config }} is loaded
