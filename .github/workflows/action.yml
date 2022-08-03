@@ -13,14 +13,14 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+    - uses: actions/checkout@v2
+    
     - uses: robinraju/release-downloader@v1.4
       with:
         repository: ${{ secrets.REPO }}
         token: ${{ secrets.GH_PAT }}
         latest: true
         fileName: "build.zip"
-        
-    - uses: actions/checkout@v2
     
     - name: Setup Python
       uses: actions/setup-python@v2
