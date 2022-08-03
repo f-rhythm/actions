@@ -26,4 +26,6 @@ jobs:
     - name: Set config
       run: |
         Set-Content build\setting.txt "${{ inputs.config }}"
-        echo "${{ inputs.config }}" is loaded
+        echo "${{ inputs.config }} is loaded."
+    - name: Check config
+      run: Get-Content build\setting.txt
