@@ -25,7 +25,6 @@ jobs:
         
     - name: Start app
       run: build\maidon-creation.exe | Wait-Process
-      timeout-minutes: 60
     
     - name: Run script
       run: build\main.py
