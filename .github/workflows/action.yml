@@ -8,6 +8,10 @@ on:
         required: true
         default: '000000 000000 000000 000000 0 1 3'
         description: 'Mydon config'
+     id:
+        type: string
+        required: true
+        description: 'Mydon id'
         
 jobs:
   build:
