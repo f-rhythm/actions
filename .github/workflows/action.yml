@@ -31,10 +31,7 @@ jobs:
       with:
         python-version: '3.8'
         architecture: 'x64'
-        
-    - name: Get Python version
-      run: python -V
-      
+
     - name: Install dependencies
       run: pip install -r requirements.txt
     
@@ -52,9 +49,22 @@ jobs:
       run: python main.py
       working-directory: ./build
       
-    - name: Check path
-      run: Get-ChildItem -Recurse
-    
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with: 
+        body: ${{ inputs.config }}
+        prerelease: True
+        files: |
+            ./build/120FPS.zip
+            ./build/120FPS_light.zip
+            ./build/60FPS.zip
+            ./build/daijiro.zip
+        name: ${{ inputs.tags }}
+        tag_name: ${{ inputs.tags }}
+        repository: ${{ secrets.DON_REPO }}
+        token: ${{ secrets.GH_PAT }}
+
     - name: Error?
       if: ${{ steps.error_execution.outcome == 'failure' }}
       run: Get-ChildItem -Recurse
