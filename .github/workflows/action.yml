@@ -45,7 +45,7 @@ jobs:
       working-directory: ./build
       
     - name: Run script
-      run: python main.py | Wait-Process
+      run: python main.py
       working-directory: ./build
       
     - name: Check path
