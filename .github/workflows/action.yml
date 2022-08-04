@@ -40,17 +40,13 @@ jobs:
 #     - name: Start app
 #       run: build\maidon-creation.exe | Wait-Process
     
-    - name: Change Path
-      run: Set-Location D:/a/actions/actions/build
-    
     - name: Check path
       run: Get-ChildItem
-
+      working-directory: ./build
+      
     - name: Run script
-      run: python main.py | Wait-Process  
-    
-    - name: Change Path
-      run: Set-Location ../
+      run: python main.py | Wait-Process
+      working-directory: ./build
       
     - name: Check path
       run: Get-ChildItem -Recurse
