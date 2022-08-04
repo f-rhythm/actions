@@ -42,12 +42,15 @@ jobs:
     
     - name: Change Path
       run: cd build
-      
+    
+    - name: Check path
+      run: Get-ChildItem
+
     - name: Run script
-      run: python main.py | Wait-Process  
+      run: python .\main.py | Wait-Process  
     
     - name: Change Path
-      run: cd ../
+      run: cd ..\
       
     - name: Check path
       run: Get-ChildItem -Recurse
