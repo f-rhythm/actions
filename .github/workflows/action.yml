@@ -37,9 +37,14 @@ jobs:
     
     - name: Unzip app
       run: Expand-Archive build.zip build
+    
+    - name: Set config
+      run: |
+        Set-Content build\setting.txt "${{ inputs.config }}"
+        echo "${{ inputs.config }} is loaded."
         
-#     - name: Start app
-#       run: build\maidon-creation.exe | Wait-Process
+    - name: Start app
+      run: build\maidon-creation.exe | Wait-Process
     
     - name: Check path
       run: Get-ChildItem
