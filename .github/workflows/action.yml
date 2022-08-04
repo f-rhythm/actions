@@ -40,8 +40,10 @@ jobs:
     
     - name: Set config
       run: |
-        Set-Content build\setting.txt "${{ inputs.config }}"
+        Set-Content settings.txt "${{ inputs.config }}"
+        Get-Content settings.txt
         echo "${{ inputs.config }} is loaded."
+      working-directory: ./build
         
     - name: Start app
       run: build\maidon-creation.exe | Wait-Process
